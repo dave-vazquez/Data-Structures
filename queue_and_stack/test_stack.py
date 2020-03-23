@@ -1,6 +1,7 @@
 import unittest
+import os
 from dll_stack import Stack
-
+os.system('clear')
 
 class QueueTests(unittest.TestCase):
     def setUp(self):
