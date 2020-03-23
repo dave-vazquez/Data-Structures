@@ -28,16 +28,37 @@ class LinkedList:
 
         return False
 
-    # def remove(self, value):
-    #     curr_node = self.head
-    #     prev_node = None
+    def remove(self, value):
+        removed_value = None
 
-    #     while curr_node != None:
-    #         if curr_node.value == value:
-    #             return True
-    #         curr_node = curr_node.next
+        # if the list is empty
+        if self.head == None:
+            return False
+        # if there's only one node in the list
+        if self.head == self.tail and self.head.value == value:
+            removed_value = self.tail.value
+            self.head = None
+            self.tail = None
 
-    #     return False
+        # if value is at head
+        if self.head.value == value:
+            removed_value = self.head.value
+            self.head = self.head.next
+            return removed_value
+
+        # if the value may be past the head
+        prev_node = self.head
+        curr_node = self.head.next
+
+        while curr_node != None:
+            if curr_node.value == value:
+                removed_value = curr_node.value
+                self.head.next = self.head.next.next
+                return removed_value
+            prev_node = curr_node
+            curr_node = curr_node.next
+
+        return False
 
     def __str__(self):
         list_str = ""

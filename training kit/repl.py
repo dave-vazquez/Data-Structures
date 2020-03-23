@@ -14,3 +14,8 @@ print(f"l_list: {l_list}")
 
 value = 5
 print(f"l_list contains {value}: {l_list.contains(value)}")
+
+value_2 = 7
+l_list.remove(value_2)
+print(f"removing {value_2}")
+print(f"l_list: {l_list}")
