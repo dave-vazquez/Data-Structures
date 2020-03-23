@@ -7,17 +7,17 @@ os.system('clear')
 
 class Stack:
     def __init__(self):
+        self.size = 0
         self.storage = DoublyLinkedList()
-        self.size = len(self.storage)
 
     def push(self, value):
+        self.size += 1
         self.storage.add_to_tail(value)
 
     def pop(self):
-        if len(self.storage) > 0:
-            removed = self.storage.remove_from_tail()
-            self.size = len(self.storage)
-            return removed
+        if self.size > 0:
+            self.size -= 1
+            return self.storage.remove_from_tail()
 
     def len(self):
-        return len(self.storage)
+        return self.size
