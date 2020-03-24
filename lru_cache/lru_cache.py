@@ -29,10 +29,11 @@ class LRUCache:
     def get(self, key):
         # if the key is in the cache, O(n) -_- ??
         if key in self.cache:
-            # move it's node to the front of the storage
+            # move it's node to the storage head as
+            # the most recently used entry
             node = self.cache[key]
             self.storage.move_to_front(node)
-            # return the value
+            # and return the value
             return node.value
 
         return None
@@ -53,13 +54,18 @@ class LRUCache:
             # delete the node from the storage
             cached_node = self.cache[key]
             self.storage.delete(cached_node)
+            # and add the value to the storage head as
+            # the most recently used entry
+            self.storage.add_to_head(value)
 
-        else:  # we about to add, so increment count
+        else:
+            # or just add the value to the storage head as
+            # the most recently used entry
+            self.storage.add_to_head(value)
+            # increment
             self.count += 1
 
-        # add the value to the head of the storage
-        self.storage.add_to_head(value)
-        # update the value for the cache
+        # update the value in the cache to the head
         self.cache[key] = self.storage.head
 
         # and if the size of the cache has reached it's limit
