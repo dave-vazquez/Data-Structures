@@ -79,3 +79,12 @@ class LRUCache:
                     self.cache[k].value = None
 
             self.count -= 1
+
+
+# QUESTION: Because a dictionary (cache look-up) is not a true hash table, the RTC is O(n)
+# So if we never delete entries from the dictionary (cache look-up) this cache will grow
+# and grow and grow.. defeating the whole purpose of fast access to recently used data
+
+# the tests demand that you don't delete cache entries... so like, what gives??????
+
+# maybe I'm not understanding.
