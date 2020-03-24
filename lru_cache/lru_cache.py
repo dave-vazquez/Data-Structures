@@ -37,7 +37,22 @@ class LRUCache:
     """
 
     def set(self, key, value):
-        # add key, value pair to cache
-        # if the cache has hit it's limit, drop the lowest-priority pair from the
-        # add or overwrite value if key exists in cache lookup
-        # or just add it if it doesn't
+        # if the key already exists in the cache_lookup O(n) -_- ??
+        if key in self.cache_lookup:
+            # move the node to the head
+            node = self.cache_lookup[key]
+            self.cache.move_to_front(node)
+            # update the cache_lookup so it references the head
+            # of the cache
+            self.cache_lookup[key] = self.cache.head
+        else:
+            # add the node to the head
+            self.cache.add_to_head(value)
+            # create a key-value pair entry in the cache_lookup
+            self.cache_lookup[key] = self.cache.head
+
+        # and if the size of the cache has reached it's limit
+        if len(self.cache) > limit:
+            # remove the node from the tail
+            self.cache.remove_from_tail()
+            # TODO: should I also remove the key-value pair from the cache-lookup
