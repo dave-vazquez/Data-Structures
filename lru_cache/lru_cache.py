@@ -1,3 +1,6 @@
+from doubly_linked_list import DoublyLinkedList
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -6,8 +9,12 @@ class LRUCache:
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
     """
+
     def __init__(self, limit=10):
-        pass
+        self.cache = DoublyLinkedList()
+        self.cache_lookup = dict()
+        self.limit = limit
+        self.count = 0
 
     """
     Retrieves the value associated with the given key. Also
@@ -16,9 +23,8 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
-    def get(self, key):
-        pass
 
+    def get(self, key):
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
@@ -29,5 +35,9 @@ class LRUCache:
     want to overwrite the old value associated with the key with
     the newly-specified value.
     """
+
     def set(self, key, value):
-        pass
+        # add key, value pair to cache
+        # if the cache has hit it's limit, drop the lowest-priority pair from the
+        # add or overwrite value if key exists in cache lookup
+        # or just add it if it doesn't
