@@ -1,5 +1,7 @@
 import unittest
 from lru_cache import LRUCache
+import os
+os.system('clear')
 
 
 class CacheTests(unittest.TestCase):

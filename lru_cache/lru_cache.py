@@ -1,4 +1,6 @@
 from doubly_linked_list import DoublyLinkedList
+import os
+os.system('clear')
 
 
 class LRUCache:
