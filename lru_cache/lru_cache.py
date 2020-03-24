@@ -25,6 +25,12 @@ class LRUCache:
     """
 
     def get(self, key):
+        if key in self.cache_lookup:
+            node = self.cache_lookup[key]
+            self.cache.move_to_front(node)
+            return node.value
+
+        return None
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
