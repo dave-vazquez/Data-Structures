@@ -27,12 +27,12 @@ class LRUCache:
     """
 
     def get(self, key):
-        # if the key is in the cache
+        # if the key is in the cache, O(n) -_- ??
         if key in self.cache:
             # move it's node to the front of the storage
             node = self.cache[key]
             self.storage.move_to_front(node)
-            # set the value of the key to the node
+            # return the value
             return node.value
 
         return None
@@ -48,18 +48,18 @@ class LRUCache:
     """
 
     def set(self, key, value):
-        # if the key already exists in the cache O(n) -_- ??
+        # if the key is in the cache, O(n) -_- ??
         if key in self.cache:
-            # delete the node from the cache
+            # delete the node from the storage
             cached_node = self.cache[key]
             self.storage.delete(cached_node)
 
-        else:
+        else:  # we about to add, so increment count
             self.count += 1
 
-        # add a new node to the head of the cache
+        # add the value to the head of the storage
         self.storage.add_to_head(value)
-        # udate the value for the cache entry
+        # update the value for the cache
         self.cache[key] = self.storage.head
 
         # and if the size of the cache has reached it's limit
@@ -67,9 +67,7 @@ class LRUCache:
             # remove the node from the tail
             removed_node = self.storage.remove_from_tail()
 
-            # remove the entry from the cache
+            # change the value in the cache to None, O(n) -_- ??
             for k, v in self.cache.items():
                 if v.value == removed_node:
                     self.cache[k].value = None
-
-# these are bad comments
