@@ -71,3 +71,5 @@ class LRUCache:
             for k, v in self.cache.items():
                 if v.value == removed_node:
                     self.cache[k].value = None
+
+            self.count -= 1
