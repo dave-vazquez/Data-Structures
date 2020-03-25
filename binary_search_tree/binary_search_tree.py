@@ -112,3 +112,6 @@ bst.insert(7)
 bst.insert(6)
 print(bst.left.right.value)  # 3
 print(bst.right.left.value)  # 6
+
+# Stretchy Stretch
+# airport heap problem
