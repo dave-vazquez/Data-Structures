@@ -73,7 +73,11 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
@@ -84,11 +88,13 @@ class BinarySearchTree:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    # USE QUEUE
     def bft_print(self, node):
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    # USE STACK
     def dft_print(self, node):
         pass
 
@@ -115,3 +121,18 @@ print(bst.right.left.value)  # 6
 
 # Stretchy Stretch
 # airport heap problem
+
+
+# NOTE: From Lecture
+# O -> worst case
+# Theta --> best case?
+
+# O traversing --> n
+# Theta traversing --> ????? log(n)
+
+
+# traversal has to go through all nodes
+# search doesn't
+
+
+# breadth --> layer by layer, or width
