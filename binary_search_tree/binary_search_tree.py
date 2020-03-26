@@ -1,6 +1,8 @@
 
 import os
 import sys
+from dll_queue import Queue
+from dll_stack import Stack
 sys.path.append('../queue_and_stack')
 os.system("clear")
 
