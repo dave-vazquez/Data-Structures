@@ -115,12 +115,22 @@ class BinarySearchTree:
     # USE STACK
 
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
+
+        while stack.size > 0:
+            node = stack.pop()
+            print(node.value)
+            if node.left:
+                stack.push(node.left)
+            if node.right:
+                stack.push(node.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self, node):
         pass
 
@@ -138,7 +148,7 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print(bst)
+bst.dft_print(bst)
 
 # Stretchy Stretch
 # airport heap problem
