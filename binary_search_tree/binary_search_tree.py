@@ -86,17 +86,29 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:
+            node.in_order_print(node.left)
+
+        print(node.value)
+
+        if node.right:
+            node.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     # USE QUEUE
+
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        queue.enqueue(self)
+
+        while queue.len() > 0:
+            node = queue.dequeue()
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     # USE STACK
+
     def dft_print(self, node):
         pass
 
@@ -112,14 +124,17 @@ class BinarySearchTree:
         pass
 
 
-bst = BinarySearchTree(5)
+bst = BinarySearchTree(1)
 
-bst.insert(2)
-bst.insert(3)
+bst.insert(8)
+bst.insert(5)
 bst.insert(7)
 bst.insert(6)
-print(bst.left.right.value)  # 3
-print(bst.right.left.value)  # 6
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
+bst.in_order_print(bst)
 
 # Stretchy Stretch
 # airport heap problem
