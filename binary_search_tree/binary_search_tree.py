@@ -100,10 +100,15 @@ class BinarySearchTree:
 
     def bft_print(self, node):
         queue = Queue()
-        queue.enqueue(self)
+        queue.enqueue(node)
 
         while queue.len() > 0:
             node = queue.dequeue()
+            print(node.value)
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -125,7 +130,6 @@ class BinarySearchTree:
 
 
 bst = BinarySearchTree(1)
-
 bst.insert(8)
 bst.insert(5)
 bst.insert(7)
@@ -134,7 +138,7 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.in_order_print(bst)
+bst.bft_print(bst)
 
 # Stretchy Stretch
 # airport heap problem
